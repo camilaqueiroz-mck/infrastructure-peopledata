@@ -6,7 +6,14 @@ terraform {
       version = ">= 4.47"
     }
   }
+  
+  backend "s3" {
+    bucket = "grupo-rubi-bucket"
+    key    = "infrastructure/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
+
 provider "aws" {
   region = "us-east-1"
 }

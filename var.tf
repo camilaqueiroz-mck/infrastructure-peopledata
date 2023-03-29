@@ -23,3 +23,22 @@ variable "env" {
   type        = string
   description = "Enviroment"
 }
+
+variable "db_username" {
+  type        = string
+  description = "username do bd"
+}
+
+variable "db_password" {
+  type        = string
+  description = "senha do bd"
+}
+
+variable "name" {
+  type = string
+}
+
+# variable "subnets_private_ids" {
+#   type        = list(string)
+#   description = "lista subnets pub id"
+# }
