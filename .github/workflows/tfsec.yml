@@ -35,6 +35,7 @@ jobs:
         with:
           # sarif_file: tfsec.sarif  
           soft_fail: false
+          hard_fail: true
 
 
      
