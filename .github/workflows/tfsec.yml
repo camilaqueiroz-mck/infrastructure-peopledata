@@ -29,7 +29,7 @@ jobs:
       - name: tfsec
         uses: tfsec/tfsec-sarif-action@v0.1.0
         with:
-          sarif_file: tfsec.sarif  
+          # sarif_file: tfsec.sarif  
           soft_fail: true
 
       - run: | 
