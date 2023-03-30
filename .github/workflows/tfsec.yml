@@ -11,12 +11,22 @@ jobs:
     permissions:
         id-token: write
         contents: read
+        issues: write
+        pull-requests: write
+        actions: read
+          
     name: tfsec sarif report
     runs-on: ubuntu-latest
 
     steps:
       - name: Clone repo
         uses: actions/checkout@master
+
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #    role-to-assume: ${{ secrets.AWS_ARN_ECR_NODE_API }}
+      #    aws-region: us-east-1
 
       - name: tfsec
         uses: tfsec/tfsec-sarif-action@v0.1.0
