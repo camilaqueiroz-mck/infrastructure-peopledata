@@ -4,8 +4,13 @@ on:
     branches:
       - main
   pull_request:
+
 jobs:
+
   tfsec:
+    permissions:
+        id-token: write
+        contents: read
     name: tfsec sarif report
     runs-on: ubuntu-latest
 
