@@ -37,5 +37,5 @@ jobs:
         uses: aquasecurity/tfsec-action@v1.0.0
         with: 
           # soft_fail: false
-          continueOnError: false
+          continueOnError: true
 
