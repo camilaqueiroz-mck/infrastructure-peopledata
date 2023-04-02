@@ -35,7 +35,8 @@ jobs:
 
       - name: tfsec
         uses: aquasecurity/tfsec-action@v1.0.0
-        with: 
-          soft_fail: false
+        # SE TIRAR ESSA PARTE A PIPE CONSEGUE QUEBRAR
+        # with: 
+        #   soft_fail: false
           # continueOnError: true
 
