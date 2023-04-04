@@ -38,7 +38,7 @@ variable "name" {
   type = string
 }
 
-# variable "subnets_private_ids" {
-#   type        = list(string)
-#   description = "lista subnets pub id"
-# }
+variable "subnets_private_ids" {
+  type        = list(string)
+  description = "lista subnets pub id"
+}

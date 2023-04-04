@@ -1,0 +1,60 @@
+name: Terraform
+
+on: 
+  workflow_run:  
+    workflows: [tfsec]  
+    types:    
+      - completed
+
+# env:
+#   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#   AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+
+# on:
+#   push:
+#     branches: [ "main" ]
+jobs:
+  terraform:
+    permissions:
+      id-token: write
+      contents: read
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    # defaults:
+      # run:
+      #   working-directory: infra
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_INFRA }}
+          role-session-name: ecr
+          aws-region: us-east-1
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Terraform Init
+        id: init
+        run: terraform init
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+      - name: Terraform Plan
+        id: plan
+        run: |
+          ls -la
+          terraform plan -var-file="dev.tfvars" -no-color
+      - name: Terraform Apply
+        id: apply
+        run: |
+          ls -la
+          terraform apply -var-file="dev.tfvars" -auto-approve
+
+
+
+
+
+
+

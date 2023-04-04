@@ -7,11 +7,11 @@ module "vpc" {
   subnet_private_cidr_blocks = var.subnet_private_cidr_blocks
 }
 
-module "eks" {
-  source = "git::https://github.com/camilaqueiroz-mck/modules//eks_module"
-  env = var.env
-  subnets_private_ids = module.vpc.private_subnet_id
-}
+# # module "eks" {
+# #   source = "git::https://github.com/camilaqueiroz-mck/modules//eks_module"
+# #   env = var.env
+# #   subnets_private_ids = module.vpc.private_subnet_id
+# # }
 
 module "rds" {
   source = "git::https://github.com/camilaqueiroz-mck/modules//rds_module"
@@ -23,7 +23,7 @@ module "rds" {
   eks_sec_group_id = module.eks.eks_sec_group_id
 }
 
-module "ecr" {
-  source = "git::https://github.com/camilaqueiroz-mck/modules//ecr_module"
-  name = var.name
-}
+# # module "ecr" {
+# #   source = "git::https://github.com/camilaqueiroz-mck/modules//ecr_module"
+# #   name = var.name
+# # }
