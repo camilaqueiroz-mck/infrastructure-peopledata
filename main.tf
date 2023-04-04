@@ -20,7 +20,7 @@ module "rds" {
   vpc_id = module.vpc.vpc_id
   db_username = var.db_username
   db_password = var.db_password
-  eks_sec_group_id = module.eks.eks_sec_group_id
+  # eks_sec_group_id = module.eks.eks_sec_group_id
 }
 
 # # module "ecr" {
